@@ -97,8 +97,12 @@ while True:
             while True:
                 if file_to_rename in files_in_dir_for_rn:
                     received_file.close()
-                    os.rename(directory + "\\" + file_to_rename, directory + "\\" + new_name)
+                    file_to_rename_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", file_to_rename)
+                    new_name_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", new_name)
+                    # os.rename(directory + "\\" + file_to_rename, directory + "\\" + new_name)
+                    os.rename(file_to_rename_w_dir, new_name_w_dir)
                     print("File renamed successfully.")
+                    break
                 else:
                     file_to_rename = input("File not found. Enter another file to rename: ")
 
