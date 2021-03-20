@@ -2,7 +2,7 @@
 
 An app that allows the client to send files to the server. The client and server each have a set of commands they can execute.
 
-Server Commands: \n
+Server Commands: <br />
 LIST: List all received files server has received
 DELETE: Delete a received file
 RENAME: Rename a received file
