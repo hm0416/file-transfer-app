@@ -6,28 +6,6 @@ from os.path import isfile, join
 
 ### AUTHOR : HIFA MOUSOU ###
 
-# #list all received files server has received
-# def list_files():
-#     pass
-#
-# #delete a received file
-# def delete_files():
-#     pass
-#
-# #get a list of cmds the sever can execute
-# def get_cmds():
-#     pass
-#
-# #quit program
-# def quit_cmd():
-#     pass
-#
-# #rename a received file on the sever
-# def rename_files():
-#     pass
-
-
-
 server_host = '127.0.0.1'
 user_input_port = input("What network port will the server application listen from? ")
 server_port = int(user_input_port)
@@ -72,7 +50,7 @@ while True:
             i = 1
             list_of_received_files = [f for f in listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received") if isfile(join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", f))]
             for f in list_of_received_files:
-                if f == '.DS_Store' or f == 'server.py':
+                if f == '.DS_Store' or f == 'server.py' or f == 'server.bat':
                     pass
                 else:
                     print(str(i) + '. ' + f + '\n')
@@ -93,7 +71,7 @@ while True:
             file_to_rename = input("Which file do you want to rename?: ")
             new_name = input("What would you like to rename it to?: ")
             files_in_dir_for_rn = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
-            directory = r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received"
+            # directory = r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received"
             while True:
                 if file_to_rename in files_in_dir_for_rn:
                     received_file.close()
@@ -109,7 +87,6 @@ while True:
     received_file.close()
 
 socket_connection.close()
-# print(f"Sever disconnected. You can find the transferred file in the received folder.")
 
 
 
