@@ -32,15 +32,10 @@ def client_func(socket_connection, address):
         if cmd == "DELETE":
             user_input = socket_connection.recv(1024).decode("utf-8")
             user_input_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", user_input)
-            files_in_dir = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
+            # files_in_dir = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
 
-            while True:
-                if user_input in files_in_dir:
-                    os.remove(user_input_w_dir)
-                    socket_connection.send("File deleted successfully.".encode("utf-8"))
-                    break
-                else:
-                    user_input = input("File not found. Enter another file to delete: ")
+            os.remove(user_input_w_dir)
+            socket_connection.send("File deleted successfully.".encode("utf-8"))
 
             # while True:
             #     if user_input in files_in_dir:
