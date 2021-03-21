@@ -23,7 +23,7 @@ def client_func(socket_connection, address):
         if cmd == "LIST":
             i = 1
             list_of_files = ""
-            list_of_received_files = [f for f in listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received") if isfile(join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", f))]
+            list_of_received_files = [f for f in listdir(r"/Users/hm0416/file-transfer-app/received") if isfile(join(r"/Users/hm0416/file-transfer-app/received", f))]
             for f in list_of_received_files:
                 # if f != '.DS_Store' or f != 'server.py' or f != 'server.bat':
                 list_of_files += str(i) + '. ' + f + '\n'
@@ -31,7 +31,7 @@ def client_func(socket_connection, address):
             socket_connection.send(list_of_files.encode("utf-8"))
         if cmd == "DELETE":
             user_input = socket_connection.recv(1024).decode("utf-8")
-            user_input_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", user_input)
+            user_input_w_dir = os.path.join(r"/Users/hm0416/file-transfer-app/received", user_input)
             # files_in_dir = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
 
             os.remove(user_input_w_dir)
@@ -49,48 +49,41 @@ def client_func(socket_connection, address):
         if cmd == "RENAME":
             file_to_rename = socket_connection.recv(1024).decode("utf-8")
             new_name = socket_connection.recv(1024).decode("utf-8")
-            files_in_dir_for_rn = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
+            files_in_dir_for_rn = os.listdir(r"/Users/hm0416/file-transfer-app/received")
             # directory = r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received"
-            while True:
-                if file_to_rename in files_in_dir_for_rn:
-                    # received_file.close()
-                    file_to_rename_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", file_to_rename)
-                    new_name_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", new_name)
-                    # os.rename(directory + "\\" + file_to_rename, directory + "\\" + new_name)
-                    os.rename(file_to_rename_w_dir, new_name_w_dir)
-                    socket_connection.send("File renamed successfully.".encode("utf-8"))
-                    break
-                else:
-                    file_to_rename = input("File not found. Enter another file to rename: ")
+
+            file_to_rename_w_dir = os.path.join(r"/Users/hm0416/file-transfer-app/received", file_to_rename)
+            new_name_w_dir = os.path.join(r"/Users/hm0416/file-transfer-app/received", new_name)
+            # os.rename(directory + "\\" + file_to_rename, directory + "\\" + new_name)
+            os.rename(file_to_rename_w_dir, new_name_w_dir)
+            socket_connection.send("File renamed successfully.".encode("utf-8"))
+
         if cmd == "SEND":
             file_name_to_send = socket_connection.recv(1024).decode("utf-8")
-            files_in_dir_to_send = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender")
-            path_to_send_to = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", file_name_to_send)
-            file_to_send_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender", file_name_to_send)
+            files_in_dir_to_send = os.listdir(r"/Users/hm0416/file-transfer-app/sender")
+            path_to_send_to = os.path.join(r"/Users/hm0416/file-transfer-app/received", file_name_to_send)
+            file_to_send_w_dir = os.path.join(r"/Users/hm0416/file-transfer-app/sender", file_name_to_send)
 
-            while True:
-                if file_name_to_send in files_in_dir_to_send:
-                    file = open(file_to_send_w_dir, 'r')
-                    file_data = file.read()
-                    with open(path_to_send_to, 'w') as new_f:
-                        new_f.write(file_data)
+            file = open(file_to_send_w_dir, 'r')
+            file_data = file.read()
+            with open(path_to_send_to, 'w') as new_f:
+                new_f.write(file_data)
 
-                    # file_to_send_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender", file_name_to_send)
-                    # file = open(file_to_send_w_dir, 'r')
-                    # file_data = file.read()
-                    # sends filename
-                    # socket_connection.send(file_name_to_send.encode("utf-8"))
-                    # socket_connection.recv(1024).decode("utf-8")
-                    #
-                    # # sends file data
-                    # socket_connection.send(file_data.encode("utf-8"))
-                    # socket_connection.recv(1024).decode("utf-8")
+            # file_to_send_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender", file_name_to_send)
+            # file = open(file_to_send_w_dir, 'r')
+            # file_data = file.read()
+            # sends filename
+            # socket_connection.send(file_name_to_send.encode("utf-8"))
+            # socket_connection.recv(1024).decode("utf-8")
+            #
+            # # sends file data
+            # socket_connection.send(file_data.encode("utf-8"))
+            # socket_connection.recv(1024).decode("utf-8")
 
-                    socket_connection.send("File transferred successfully to server!".encode("utf-8"))
-                    file.close()
-                    break
-                else:
-                    file_name_to_send = input("File not found. Enter another file to rename: ")
+            socket_connection.send("File transferred successfully to server!".encode("utf-8"))
+            file.close()
+            break
+
 
     # received_file.close()
 

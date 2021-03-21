@@ -48,7 +48,6 @@ while True:
         # print("\nAvailable Commands: \n LIST: List all files available to send to the server \n DELETE: Delete an existing file \n GET: Get a list of cmds the client can execute \n QUIT: Quit the program \n RENAME: Rename an existing file")
     if cmd == "QUIT":
         client_socket.send(cmd.encode("utf-8"))
-        break
 
     if cmd == "LIST":
         client_socket.send(cmd.encode("utf-8"))
@@ -57,7 +56,7 @@ while True:
     if cmd == "DELETE":
         client_socket.send(cmd.encode("utf-8"))
         user_input = input("What file do you want to delete?: ")
-        files_in_dir = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
+        files_in_dir = os.listdir(r"/Users/hm0416/file-transfer-app/received")
 
         while True:
             if user_input in files_in_dir:
@@ -71,7 +70,7 @@ while True:
     if cmd == "RENAME":
         client_socket.send(cmd.encode("utf-8"))
         file_to_rename = input("Which file do you want to rename?: ")
-        files_in_dir_for_rename = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received")
+        files_in_dir_for_rename = os.listdir(r"/Users/hm0416/file-transfer-app/received")
 
         while True:
             if file_to_rename in files_in_dir_for_rename:
@@ -87,7 +86,7 @@ while True:
     if cmd == "SEND":
         client_socket.send(cmd.encode("utf-8"))
         file_name_to_send = input("\nEnter the name of the file you would like to send to the server: ")
-        files_in_dir_for_sending = os.listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender")
+        files_in_dir_for_sending = os.listdir(r"/Users/hm0416/file-transfer-app/sender")
 
         while True:
             if file_name_to_send in files_in_dir_for_sending:
