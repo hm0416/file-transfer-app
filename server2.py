@@ -46,7 +46,7 @@ import threading
 #         elif cmd == "SEND":
 #             file_name_to_send = socket_connection.recv(1024).decode("utf-8")
 #             path_to_send_to = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", file_name_to_send)
-#             file_to_send_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender", file_name_to_send)
+#             file_to_send_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\client_files", file_name_to_send)
 #
 #             file = open(file_to_send_w_dir, 'r')
 #             file_data = file.read()
@@ -120,7 +120,7 @@ while True:
         elif cmd == "SEND":
             file_name_to_send = socket_connection.recv(1024).decode("utf-8")
             path_to_send_to = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", file_name_to_send)
-            file_to_send_w_dir = os.path.join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\sender", file_name_to_send)
+            file_to_send_w_dir = os.path.join(r"/client_files", file_name_to_send)
 
             file = open(file_to_send_w_dir, 'r')
             file_data = file.read()
