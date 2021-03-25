@@ -2,15 +2,9 @@ import os
 import socket
 
 ### AUTHOR : HIFA MOUSOU ###
+## Inspiration for my code was taken from https://www.youtube.com/watch?v=FQ-scCeKWas ###
 
-# def check_cmd(cmd, list_of_cmds):
-#     while True:
-#         if cmd in list_of_cmds:
-#             command = cmd
-#         else:
-#             command = input("Invalid command entered. These are the available commands you can enter: \n LIST: List all received files server has received \n DELETE: Delete a received file \n GET: Get a list of cmds the sever can execute \n QUIT: Quit the program \n RENAME: Rename a received file \n SEND: Send a file to the server \n Enter command again: ")
-#
-#     return command
+### HOW TO RUN: Full instructions in server.py, but for this .py file, replace the hard-coded paths (except for the part that says "\received" and "\client_files") on lines 43, 57, 72 with your absolute path
 
 user_input_host = input("What's the sever host? ")
 user_input_port = input("What's the server port number? ")

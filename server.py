@@ -5,6 +5,11 @@ from os import listdir
 from os.path import isfile, join
 
 ### AUTHOR : HIFA MOUSOU ###
+## Inspiration for my code was taken from https://www.youtube.com/watch?v=FQ-scCeKWas ###
+
+### How to Run: If you're using pycharm, right click the folder name and copy the absolute path. Replace the hard-coded path (except the "\received" and "\client_files" part on lines 46, 54, 60, 61, 66 and 67 with your absolute path. Also, you will need to
+### edit the configuration so click Run -> Edit configurations then select "client" on the left hand window and make sure script path is set to your absolute path and append "\client.py" to the absolute path
+### for the working directory just paste in the absolute path.
 
 server_host = '127.0.0.1'
 user_input_port = input("What network port will the server application listen from? ")
@@ -44,7 +49,6 @@ while True:
             list_of_files = ""
             list_of_received_files = [f for f in listdir(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received") if isfile(join(r"C:\Users\Hifam\PycharmProjects\file-transfer-app\received", f))] #finds all files in the received directory for the server
             for f in list_of_received_files:
-                # if f != '.DS_Store' or f != 'server.py' or f != 'server.bat':
                 list_of_files += str(i) + '. ' + f + '\n' #displays the files
                 i += 1
             socket_connection.send(list_of_files.encode("utf-8"))
